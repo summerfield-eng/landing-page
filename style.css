@@ -51,6 +51,11 @@ nav {
 .hero-subtext {
   font-size: 18px;
   color: #e5e7eb;
+  overflow: hidden;
+  height: fit-content;
+  flex-grow: 0;
+  height: 100px;
+  display: -webkit-inline-box;
 }
 
 .header-left-content {

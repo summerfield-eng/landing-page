@@ -1,4 +1,6 @@
 const headerContainer = document.querySelector("#headerContainer");
+const cardContainer = document.querySelector("#cardContainer");
+
 const games = [
   {
     name: "Personal 5 Royal",
@@ -45,15 +47,11 @@ const gameInfo = [
     imgAlt: "An image of the game, Ori and the Blind Forest",
   },
 ];
-let gameIndex = 0;
-function appendElement(elem, container) {
-  container.innerHTML = elem;
-}
 
 function createElemComponent(object) {
   const { name, desc, img, link, imgAlt } = object;
 
-  generatedElem = `
+  const generatedElem = `
     <div class="header-left-content">
           <p class="hero-text">${name}</p>
           <p class="hero-subtext">
@@ -61,7 +59,7 @@ function createElemComponent(object) {
           </p>
           <button>
             <a
-              href="${link}}"
+              href="${link}}" target="_blank"
               >Get it here</a
             >
           </button>
@@ -78,15 +76,39 @@ function createElemComponent(object) {
 
   return generatedElem;
 }
+function createRecommendedElemComp(array) {
+  let completeCards = "";
+
+  for (let index = 0; index < array.length; index++) {
+    const { name, src, alt } = array[index];
+
+    const cardElem = `
+      <div class="card">
+        <img
+          src="${src}"
+          alt="${alt}"
+        />
+        <p>${name}</p>
+      </div>
+  `;
+
+    completeCards += cardElem;
+  }
+
+  return completeCards;
+}
+
+function appendElement(elem, container) {
+  container.innerHTML = elem;
+}
 
 function changeFeaturedGame() {
-  let internvalId = setInterval(() => {
-    if (gameIndex < gameInfo.length) {
-      appendElement(createElemComponent(gameInfo[gameIndex]), headerContainer);
-      gameIndex++;
-    } else {
-      gameIndex = 0;
-    }
+  let gameIndex = 0;
+  setInterval(function () {
+    appendElement(createElemComponent(gameInfo[gameIndex]), headerContainer);
+    gameIndex = (gameIndex + 1) % gameInfo.length;
   }, 3000);
 }
+
 changeFeaturedGame();
+appendElement(createRecommendedElemComp(games), cardContainer);
