@@ -1,0 +1,89 @@
+const games = [
+  {
+    name: "Personal 5 Royal",
+    src: "./src/persona-5-royale-ps5-store-artwork-01-en-30sep22.webp",
+    alt: "Image of the game Persona 5 Royal",
+  },
+  {
+    name: "PPokemon Emerald",
+    src: "./src/pokemon-emerald-version_4q9d.1200.webp",
+    alt: "Image of the game Pokemon Emerald",
+  },
+  {
+    name: "Ori and the Blind Forest",
+    src: "./src/ori.jpg",
+    alt: "Image of the game Ori and the Blind Forest",
+  },
+  {
+    name: "Trials of Mana",
+    src: "./src/trials-of-mana.jpg",
+    alt: "Image of the game Trials of Mana",
+  },
+];
+
+const gameInfo = [
+  {
+    name: "LOZ: Echoes of Wisdom",
+    desc: "Save the kingdom of Hyrule – this time with the wisdom of Princess Zelda – in The Legend of Zelda: Echoes of Wisdom for Nintendo Switch. The people of Hyrule are being stolen away by strange rifts that have appeared, and with a certain swordsman among those missing, it’s up to Princess Zelda to save her kingdom.",
+    img: "https://target.scene7.com/is/image/Target/GUEST_f816abc1-9145-43e9-a9f1-7c9e4480a159?wid=1200&hei=1200&qlt=80",
+    link: "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/?srsltid=AU7gw4XTrRpvqFiMi1Y-59-NwITJB8IzUWG-XVooXvQijpwx5xx-7T-I",
+    imgAlt: "An image of the game, Legend of Zelda: Echoes of wisdom",
+  },
+  {
+    name: "Persona 5 Royal",
+    desc: "Forced to transfer to a high school in Tokyo, the protagonist has a strange dream. “You truly are a prisoner of fate. In the near future, ruin awaits you.” With the goal of “rehabilitation” looming overhead, he must save others from distorted desires by donning the mask of a Phantom Thief.",
+    img: "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/c_scale,w_500/store/software/switch/70010000043147/684bd8b00abcbf6dd122727a27c01a337f667bef825f4f4662efad9854b72fd4",
+    link: "https://www.nintendo.com/us/store/products/persona-5-royal-switch/?srsltid=AU7gw4UQD5_9Z_TchGf1WQDh24mD2NanZd89M0XL28hKnfMgmpT72Ob3",
+    imgAlt: "An image of the game, Persona 5 Royal",
+  },
+];
+let gameIndex = 0;
+function appendElement(elem, container) {
+  container.innerHTML = elem;
+}
+
+function createElemComponent(object) {
+  const { name, desc, img, link, imgAlt } = object;
+
+  generatedElem = `
+    <div class="header-left-content">
+          <p class="hero-text">${name}</p>
+          <p class="hero-subtext">
+            ${desc}
+          </p>
+          <button>
+            <a
+              href="${link}}"
+              >Get it here</a
+            >
+          </button>
+        </div>
+        <div class="header-right-content">
+          <figure>
+            <img
+              src="${img}"
+              alt="${imgAlt}"
+            />
+          </figure>
+        </div>
+    `;
+
+  return generatedElem;
+}
+
+const headerContainer = document.querySelector("#headerContainer");
+
+function changeFeaturedGame() {
+  console.log("You should see this first");
+
+  let internvalId = setInterval(() => {
+    console.log("You should see this second");
+    if (gameIndex < gameInfo.length) {
+      appendElement(createElemComponent(gameInfo[gameIndex]), headerContainer);
+      gameIndex++;
+    } else {
+      gameIndex = 0;
+    }
+  }, 2000);
+}
+changeFeaturedGame();
