@@ -80,10 +80,7 @@ function createElemComponent(object) {
 }
 
 function changeFeaturedGame() {
-  console.log("You should see this first");
-
   let internvalId = setInterval(() => {
-    console.log("You should see this second");
     if (gameIndex < gameInfo.length) {
       appendElement(createElemComponent(gameInfo[gameIndex]), headerContainer);
       gameIndex++;
