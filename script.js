@@ -1,3 +1,4 @@
+const headerContainer = document.querySelector("#headerContainer");
 const games = [
   {
     name: "Personal 5 Royal",
@@ -36,6 +37,13 @@ const gameInfo = [
     link: "https://www.nintendo.com/us/store/products/persona-5-royal-switch/?srsltid=AU7gw4UQD5_9Z_TchGf1WQDh24mD2NanZd89M0XL28hKnfMgmpT72Ob3",
     imgAlt: "An image of the game, Persona 5 Royal",
   },
+  {
+    name: "Ori and the Blind Forest",
+    desc: "The forest of Nibel is dying. After a powerful storm sets a series of devastating events in motion, Ori must journey to find courage and confront a dark nemesis to save the forest of Nibel. “Ori and the Blind Forest” tells the tale of a young orphan destined for heroics, through a visually stunning Action-Platformer crafted by Moon Studios. Featuring hand-painted artwork, meticulously animated character performance, a fully orchestrated score and dozens of new features in the Definitive Edition, “Ori and the Blind Forest” explores a deeply emotional story about love and sacrifice, and the hope that exists in us all.",
+    img: "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/c_scale,w_600/store/software/switch/70010000018710/89e1f45e5012962fcdbc47b297dbb99472d04fdae7c60213bce6fb44713d2068",
+    link: "https://www.nintendo.com/us/store/products/ori-and-the-blind-forest-definitive-edition-switch/?srsltid=AU7gw4VMs83hjqhrKh38Ir-gk2on1Fuokkhc6obKTnoISEENcPYVR9i7",
+    imgAlt: "An image of the game, Ori and the Blind Forest",
+  },
 ];
 let gameIndex = 0;
 function appendElement(elem, container) {
@@ -71,8 +79,6 @@ function createElemComponent(object) {
   return generatedElem;
 }
 
-const headerContainer = document.querySelector("#headerContainer");
-
 function changeFeaturedGame() {
   console.log("You should see this first");
 
@@ -84,6 +90,6 @@ function changeFeaturedGame() {
     } else {
       gameIndex = 0;
     }
-  }, 2000);
+  }, 3000);
 }
 changeFeaturedGame();
