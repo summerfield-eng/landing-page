@@ -112,3 +112,4 @@ function changeFeaturedGame() {
 
 changeFeaturedGame();
 appendElement(createRecommendedElemComp(games), cardContainer);
+console.table(gameInfo);
